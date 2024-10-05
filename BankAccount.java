@@ -1,5 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class BankAccount{
     private final String accName;
@@ -9,9 +11,6 @@ public class BankAccount{
     private boolean isClosed;
     private String accCreated;
     private String accClosed;
-    
-
-
 
     public BankAccount(String accName) {
         this.accName = accName;
@@ -68,7 +67,10 @@ public class BankAccount{
     }
     public void deposit (Integer amount){
         //if valid, add to transactions list
-        if (amount<0){
+        if (transactionList==null){//todo understand what is the cause of the errors with list
+            transactionList = new ArrayList<>();
+        }
+        if (amount>0){
             String amt = amount.toString();
             LocalDateTime time = LocalDateTime.now();
             String currentTime = time.toString();
